@@ -19,8 +19,10 @@ deploy:
   secret_access_key: $AWS_SECRET_KEY
   local_dir: dpl_cd_upload
   skip_cleanup: true
-  on: &2
-    repo: Senzdamsik/tes_travis
+  # on: &2
+  #   repo: Senzdamsik/tes_travis
+  on:
+    all_branches: true
   bucket: senz-travis-test
   region: ap-southeast-1
 - provider: codedeploy
@@ -32,7 +34,10 @@ deploy:
   application: travis-test
   deployment_group: travis-test-group
   region: ap-southeast-1
-  on: *2
+  on:
+    all_branches: true
+  # on: *2
+
 # script:
 #   - zip -r latest *
 #   - mkdir -p dpl_cd_upload
